@@ -12,6 +12,8 @@ public class Review {
     @ManyToOne
     private Product product;
 
+    private String description;
+
     public int getId() {
         return id;
     }
@@ -26,5 +28,13 @@ public class Review {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

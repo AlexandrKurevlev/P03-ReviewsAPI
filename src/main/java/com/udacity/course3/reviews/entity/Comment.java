@@ -12,6 +12,8 @@ public class Comment {
     @ManyToOne
     private Review review;
 
+    private String description;
+
     public Comment() {
     }
 
@@ -29,5 +31,13 @@ public class Comment {
 
     public void setReview(Review review) {
         this.review = review;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
