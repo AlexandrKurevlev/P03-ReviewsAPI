@@ -1,6 +1,7 @@
 package com.udacity.course3.reviews.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Review {
@@ -12,6 +13,7 @@ public class Review {
     @ManyToOne
     private Product product;
 
+    @NotNull
     private String description;
 
     public int getId() {
