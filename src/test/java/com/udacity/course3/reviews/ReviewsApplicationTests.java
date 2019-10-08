@@ -1,9 +1,7 @@
 package com.udacity.course3.reviews;
 
-import com.udacity.course3.reviews.entity.Comment;
 import com.udacity.course3.reviews.entity.Product;
 import com.udacity.course3.reviews.entity.Review;
-import com.udacity.course3.reviews.repository.CommentRepository;
 import com.udacity.course3.reviews.repository.ProductRepository;
 import com.udacity.course3.reviews.repository.ReviewRepository;
 import org.junit.Assert;
@@ -11,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -25,9 +22,6 @@ public class ReviewsApplicationTests {
 
 	@Autowired
 	private ReviewRepository reviewRepository;
-
-	@Autowired
-	private CommentRepository commentRepository;
 
 	@Test
 	public void contextLoads() {
@@ -63,15 +57,6 @@ public class ReviewsApplicationTests {
 		List<Review> allReviewsByProduct = reviewRepository.findAllByProduct(p2);
 		Assert.assertEquals(1, allReviewsByProduct.size());
 		Assert.assertEquals(r1.getDescription(), allReviewsByProduct.get(0).getDescription());
-
-		Comment c1 = new Comment();
-		c1.setReview(r1);
-		c1.setDescription("Test Comment 1 Description");
-		commentRepository.save(c1);
-
-		List<Comment> allCommentsByReview = commentRepository.findAllByReview(r1);
-		Assert.assertEquals(1, allCommentsByReview.size());
-		Assert.assertEquals(c1.getDescription(), allCommentsByReview.get(0).getDescription());
 	}
 
 }
